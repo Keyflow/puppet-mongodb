@@ -108,6 +108,10 @@ class mongodb::server::config {
       # Template has available user-supplied data
       # - $config_data
       $cfg_content = template($config_template)
+    } elsif $version and (versioncmp($version, '4.4.1') >= 0) {
+      # Template has available user-supplied data
+      # - $config_data
+      $cfg_content = template('mongodb/mongodb.conf.4.4.erb')
     } elsif $version and (versioncmp($version, '2.6.0') >= 0) {
       # Template has available user-supplied data
       # - $config_data
